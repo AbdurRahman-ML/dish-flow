@@ -145,6 +145,47 @@ export default function Tables() {
         </Card>
       </div>
 
+      {/* Today's Reservations */}
+      <Card className="glass-card">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Clock className="w-5 h-5" />
+            Today's Reservations
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {[
+              { time: "12:00 PM", name: "Johnson Family", party: 4, table: 3, status: "confirmed" },
+              { time: "1:30 PM", name: "Smith & Co", party: 6, table: 9, status: "confirmed" },
+              { time: "7:30 PM", name: "Davis Couple", party: 2, table: 11, status: "pending" },
+              { time: "8:00 PM", name: "Miller Group", party: 8, table: 18, status: "confirmed" },
+              { time: "9:00 PM", name: "Wilson Family", party: 4, table: 17, status: "pending" }
+            ].map((reservation, index) => (
+              <div key={index} className="flex items-center justify-between p-4 rounded-lg bg-card border border-border hover:bg-muted/50 transition-colors">
+                <div className="flex items-center gap-4">
+                  <div className="text-center">
+                    <div className="font-semibold">{reservation.time}</div>
+                  </div>
+                  <div>
+                    <div className="font-medium">{reservation.name}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {reservation.party} guests • Table {reservation.table}
+                    </div>
+                  </div>
+                </div>
+                <Badge 
+                  variant={reservation.status === "confirmed" ? "outline" : "secondary"}
+                  className={reservation.status === "confirmed" ? "border-success text-success" : ""}
+                >
+                  {reservation.status}
+                </Badge>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Table Layout */}
       <Card className="glass-card">
         <CardHeader>
