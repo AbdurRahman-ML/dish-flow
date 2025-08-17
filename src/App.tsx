@@ -12,6 +12,8 @@ import Menu from "./pages/Menu";
 import Orders from "./pages/Orders";
 import Tables from "./pages/Tables";
 import Staff from "./pages/Staff";
+import Analytics from "./pages/Analytics";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ function AppLayout() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/tables" element={<Tables />} />
         <Route path="/staff" element={<Staff />} />
+        <Route path="/analytics" element={<Analytics />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     );
@@ -48,6 +52,8 @@ function AppLayout() {
               <Route path="/orders" element={<Orders />} />
               <Route path="/tables" element={<Tables />} />
               <Route path="/staff" element={<Staff />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/settings" element={<Settings />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

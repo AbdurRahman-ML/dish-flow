@@ -44,9 +44,9 @@ export function AppSidebar() {
 
   const isActive = (path: string) => currentPath === path;
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive 
-      ? "bg-primary text-primary-foreground font-medium shadow-primary" 
-      : "text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200";
+    `${isActive 
+      ? "bg-primary text-primary-foreground font-medium" 
+      : "text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"} transition-all duration-200 flex items-center ${collapsed ? 'justify-center px-2' : 'px-3'} py-2 rounded-md`;
 
   return (
     <Sidebar
@@ -81,9 +81,9 @@ export function AppSidebar() {
             <SidebarMenu className="space-y-2">
               {mainNavItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild className="p-0">
                     <NavLink to={item.url} end className={getNavCls}>
-                      <item.icon className={`h-5 w-5 ${collapsed ? 'mx-auto' : 'mr-3'}`} />
+                      <item.icon className={`h-5 w-5 ${collapsed ? '' : 'mr-3'} flex-shrink-0`} />
                       {!collapsed && <span className="text-sm">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
@@ -102,9 +102,9 @@ export function AppSidebar() {
             <SidebarMenu className="space-y-2">
               {secondaryNavItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild className="p-0">
                     <NavLink to={item.url} className={getNavCls}>
-                      <item.icon className={`h-5 w-5 ${collapsed ? 'mx-auto' : 'mr-3'}`} />
+                      <item.icon className={`h-5 w-5 ${collapsed ? '' : 'mr-3'} flex-shrink-0`} />
                       {!collapsed && <span className="text-sm">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
