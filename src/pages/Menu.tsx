@@ -6,11 +6,18 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-// Import food images
-import burgerImage from "@/assets/burger.jpg";
-import caesarSaladImage from "@/assets/caesar-salad.jpg";
-import salmonImage from "@/assets/salmon.jpg";
-import pastaImage from "@/assets/pasta.jpg";
+// Food image URLs - using high-quality food images
+const burgerImage = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop&crop=center";
+const caesarSaladImage = "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400&h=300&fit=crop&crop=center";
+const salmonImage = "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop&crop=center";
+const pastaImage = "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop&crop=center";
+const pastaImageFallback = "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop&crop=center";
+const chocolateCakeImage = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop&crop=center";
+const lemonadeImage = "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400&h=300&fit=crop&crop=center";
+const pizzaImage = "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop&crop=center";
+const sushiImage = "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&h=300&fit=crop&crop=center";
+const iceCreamImage = "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=300&fit=crop&crop=center";
+const coffeeImage = "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop&crop=center";
 
 const menuCategories = ["All", "Appetizers", "Main Course", "Desserts", "Beverages"];
 
@@ -69,7 +76,7 @@ const menuItems = [
     description: "Warm chocolate cake with molten center, served with vanilla ice cream",
     price: 8.99,
     category: "Desserts",
-    image: null,
+    image: chocolateCakeImage,
     rating: 4.8,
     prepTime: "10-12 min",
     status: "available",
@@ -81,11 +88,59 @@ const menuItems = [
     description: "House-made lemonade with fresh lemons and mint",
     price: 4.99,
     category: "Beverages",
-    image: null,
+    image: lemonadeImage,
     rating: 4.5,
     prepTime: "2-3 min",
     status: "available",
     isPopular: false
+  },
+  {
+    id: 7,
+    name: "Margherita Pizza",
+    description: "Classic pizza with tomato sauce, mozzarella, and fresh basil",
+    price: 18.99,
+    category: "Main Course",
+    image: pizzaImage,
+    rating: 4.7,
+    prepTime: "20-25 min",
+    status: "available",
+    isPopular: true
+  },
+  {
+    id: 8,
+    name: "California Roll",
+    description: "Fresh avocado, cucumber, and crab with premium sushi rice",
+    price: 22.99,
+    category: "Appetizers",
+    image: sushiImage,
+    rating: 4.9,
+    prepTime: "8-12 min",
+    status: "available",
+    isPopular: true
+  },
+  {
+    id: 9,
+    name: "Vanilla Ice Cream",
+    description: "Creamy vanilla ice cream with chocolate sauce and sprinkles",
+    price: 6.99,
+    category: "Desserts",
+    image: iceCreamImage,
+    rating: 4.6,
+    prepTime: "2-3 min",
+    status: "available",
+    isPopular: false
+  },
+  {
+    id: 10,
+    name: "Espresso Coffee",
+    description: "Rich Italian espresso served with a side of biscotti",
+    price: 3.99,
+    category: "Beverages",
+    image: coffeeImage,
+    rating: 4.8,
+    prepTime: "1-2 min",
+    status: "available",
+    isPopular: true
   }
 ];
 
@@ -160,12 +215,22 @@ export default function Menu() {
                   src={item.image}
                   alt={item.name}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
+                                     onError={(e) => {
+                     const target = e.target as HTMLImageElement;
+                     // Try fallback image for pasta
+                     if (item.name === "Pasta Carbonara" && target.src !== pastaImageFallback) {
+                       target.src = pastaImageFallback;
+                     } else {
+                       target.style.display = 'none';
+                       target.nextElementSibling?.classList.remove('hidden');
+                     }
+                   }}
                 />
-              ) : (
-                <div className="w-full h-48 bg-gradient-card flex items-center justify-center">
-                  <span className="text-muted-foreground">No Image</span>
-                </div>
-              )}
+              ) : null}
+              <div className={`w-full h-48 bg-gradient-card flex items-center justify-center ${item.image ? 'hidden' : ''}`}>
+                <span className="text-muted-foreground">No Image</span>
+              </div>
               
               {item.isPopular && (
                 <Badge className="absolute top-2 left-2 bg-primary text-primary-foreground">

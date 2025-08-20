@@ -45,14 +45,14 @@ export function AppSidebar() {
   const isActive = (path: string) => currentPath === path;
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
     `${isActive 
-      ? "bg-primary text-primary-foreground font-medium" 
-      : "text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"} transition-all duration-200 flex items-center ${collapsed ? 'justify-center px-0 min-w-[2.5rem]' : 'px-3'} py-2 rounded-md`;
+      ? "bg-primary text-white font-medium sidebar-nav-item active" 
+      : "text-primary hover:bg-accent hover:text-primary sidebar-nav-item"} transition-all duration-200 flex items-center ${collapsed ? 'justify-center px-0 min-w-[2.5rem]' : 'px-3'} py-2 rounded-md`;
 
   return (
     <Sidebar
       className={`${
         collapsed ? "w-16" : "w-64"
-      } transition-all duration-300 border-r border-sidebar-border bg-sidebar`}
+      } transition-all duration-300 border-r border-border bg-card`}
       collapsible="icon"
     >
       <SidebarContent className="p-4">
@@ -63,7 +63,7 @@ export function AppSidebar() {
               <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">K</span>
               </div>
-              <h1 className="text-lg font-semibold text-sidebar-foreground">Karachi Khana</h1>
+              <h1 className="text-lg font-semibold text-primary">Karachi Khana</h1>
             </NavLink>
           ) : (
             <NavLink to="/" className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center mx-auto hover:opacity-80 transition-opacity">
@@ -74,7 +74,7 @@ export function AppSidebar() {
 
         {/* Main Navigation */}
         <SidebarGroup>
-          <SidebarGroupLabel className="text-xs text-muted-foreground uppercase tracking-wider mb-3">
+          <SidebarGroupLabel className="text-xs text-primary/70 uppercase tracking-wider mb-3 font-medium">
             {!collapsed && "Main"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -95,7 +95,7 @@ export function AppSidebar() {
 
         {/* Secondary Navigation */}
         <SidebarGroup className="mt-8">
-          <SidebarGroupLabel className="text-xs text-muted-foreground uppercase tracking-wider mb-3">
+          <SidebarGroupLabel className="text-xs text-primary/70 uppercase tracking-wider mb-3 font-medium">
             {!collapsed && "System"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
