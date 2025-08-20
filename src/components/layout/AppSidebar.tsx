@@ -46,7 +46,7 @@ export function AppSidebar() {
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
     `${isActive 
       ? "bg-primary text-primary-foreground font-medium" 
-      : "text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"} transition-all duration-200 flex items-center ${collapsed ? 'justify-center px-2' : 'px-3'} py-2 rounded-md`;
+      : "text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"} transition-all duration-200 flex items-center ${collapsed ? 'justify-center px-0 min-w-[2.5rem]' : 'px-3'} py-2 rounded-md`;
 
   return (
     <Sidebar
@@ -59,16 +59,16 @@ export function AppSidebar() {
         {/* Logo */}
         <div className="mb-8">
           {!collapsed ? (
-            <div className="flex items-center space-x-2">
+            <NavLink to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">R</span>
+                <span className="text-primary-foreground font-bold text-sm">K</span>
               </div>
-              <h1 className="text-lg font-semibold text-sidebar-foreground">RestaurantOS</h1>
-            </div>
+              <h1 className="text-lg font-semibold text-sidebar-foreground">Karachi Khana</h1>
+            </NavLink>
           ) : (
-            <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center mx-auto">
-              <span className="text-primary-foreground font-bold text-sm">R</span>
-            </div>
+            <NavLink to="/" className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center mx-auto hover:opacity-80 transition-opacity">
+              <span className="text-primary-foreground font-bold text-sm">K</span>
+            </NavLink>
           )}
         </div>
 
@@ -83,7 +83,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild className="p-0">
                     <NavLink to={item.url} end className={getNavCls}>
-                      <item.icon className={`h-5 w-5 ${collapsed ? '' : 'mr-3'} flex-shrink-0`} />
+                      <item.icon className={`h-5 w-5 ${collapsed ? 'mx-auto' : 'mr-3'} flex-shrink-0`} />
                       {!collapsed && <span className="text-sm">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
@@ -104,7 +104,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild className="p-0">
                     <NavLink to={item.url} className={getNavCls}>
-                      <item.icon className={`h-5 w-5 ${collapsed ? '' : 'mr-3'} flex-shrink-0`} />
+                      <item.icon className={`h-5 w-5 ${collapsed ? 'mx-auto' : 'mr-3'} flex-shrink-0`} />
                       {!collapsed && <span className="text-sm">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>

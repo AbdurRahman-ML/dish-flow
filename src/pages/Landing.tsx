@@ -1,74 +1,77 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { AboutSection } from "@/components/AboutSection";
 import { 
   ChefHat, 
   Users, 
   BarChart3, 
-  Calendar, 
-  ArrowRight,
+  Clock, 
+  Shield, 
   Star,
-  Clock,
-  Shield,
-  Zap,
+  ArrowRight,
+  CheckCircle,
+  Sparkles,
   TrendingUp,
-  CheckCircle
+  Zap,
+  Globe
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
     icon: BarChart3,
     title: "Real-time Analytics",
-    description: "Track sales, monitor performance, and make data-driven decisions with live dashboards."
+    description: "Track sales, monitor daal-chawal performance, aur karein data-driven decisions with live dashboards."
   },
   {
     icon: Users,
     title: "Staff Management",
-    description: "Efficiently manage your team, track schedules, and optimize operations."
+    description: "Efficiently manage your team, track schedules, aur optimize restaurant operations."
   },
   {
-    icon: Calendar,
+    icon: Clock,
     title: "Smart Reservations",
-    description: "Streamline table bookings with intelligent reservation management."
+    description: "Streamline table bookings with intelligent reservation management system."
   },
   {
     icon: ChefHat,
     title: "Menu Control",
-    description: "Dynamic menu management with inventory tracking and pricing optimization."
+    description: "Dynamic menu management with inventory tracking - biryani se karahi tak sab kuch."
   },
   {
     icon: Shield,
     title: "Secure & Reliable",
-    description: "Enterprise-grade security with 99.9% uptime guarantee."
+    description: "Enterprise-grade security with 99.9% uptime guarantee for your business."
   },
   {
     icon: Zap,
     title: "Lightning Fast",
-    description: "Optimized performance for busy restaurant environments."
+    description: "Optimized performance for busy Pakistani restaurant environments."
   }
 ];
 
 const testimonials = [
   {
-    name: "Chef Marco Rodriguez",
-    role: "Executive Chef",
-    restaurant: "Bella Vista",
-    content: "RestaurantOS transformed our operations. We've increased efficiency by 40% and customer satisfaction is at an all-time high.",
+    name: "Ahmad Hassan",
+    role: "Restaurant Owner",
+    restaurant: "Lahori Karahi House",
+    content: "Is platform ne hamare restaurant ko completely transform kar diya hai. Orders manage karna aasan ho gaya aur customers bhi khush hain.",
     rating: 5
   },
   {
-    name: "Sarah Chen",
-    role: "Restaurant Manager",
-    restaurant: "Urban Spice",
-    content: "The analytics dashboard gives us insights we never had before. Revenue tracking and staff management are now seamless.",
+    name: "Fatima Sheikh",
+    role: "Head Chef",
+    restaurant: "Biryani Palace",
+    content: "Kitchen management features kamaal ke hain. Humara food waste 30% kam ho gaya hai aur order accuracy bhi improve hui hai.",
     rating: 5
   },
   {
-    name: "Tony Martinelli",
-    role: "Owner",
-    restaurant: "Tony's Kitchen",
-    content: "Best investment we've made. The reservation system alone has reduced no-shows by 60%.",
+    name: "Kashif Ali",
+    role: "General Manager",
+    restaurant: "Sindhi Saag Restaurant",
+    content: "Analytics dashboard se jo insights milte hain wo pehle kabhi nahi the. Hamare revenue mein 25% ka boost aya hai data-driven decisions se.",
     rating: 5
   }
 ];
@@ -110,11 +113,16 @@ export default function Landing() {
       <nav className="relative z-50 glass-card border-b border-border/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
               <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
-                <ChefHat className="w-6 h-6 text-primary-foreground" />
+                <span className="text-primary-foreground font-bold text-lg">K</span>
               </div>
-              <span className="text-xl font-bold gradient-text">RestaurantOS</span>
+              <span className="text-xl font-bold gradient-text">Karachi Khana</span>
+            </Link>
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
+              <a href="#testimonials" className="text-muted-foreground hover:text-primary transition-colors">Reviews</a>
+              <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">About</a>
             </div>
             <Link to="/dashboard">
               <Button className="bg-gradient-primary text-primary-foreground hover:opacity-90 transition-all duration-300 hover:scale-105">
@@ -133,16 +141,16 @@ export default function Landing() {
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="gradient-text">Transform</span> Your
               <br />
-              Restaurant Operations
+              Pakistani Restaurant
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-              The most advanced restaurant management platform. Streamline operations, 
-              boost revenue, and delight customers with intelligent automation.
+              Complete restaurant management solution for Pakistani cuisine. Biryani se karahi tak, 
+              streamline operations aur boost revenue with intelligent automation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/dashboard">
-                <Button size="lg" className="bg-gradient-primary text-primary-foreground text-lg px-8 py-4 hover:opacity-90 transition-all duration-300 hover:scale-105 animate-pulse">
-                  Start Free Trial
+                <Button size="lg" className="bg-gradient-primary text-primary-foreground text-lg px-8 py-4 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] animate-pulse">
+                  Start Managing Now
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
@@ -215,10 +223,10 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
-              Loved by Restaurant Owners
+              Pakistani Restaurants Love Us
             </h2>
             <p className="text-xl text-muted-foreground">
-              See what industry leaders are saying about RestaurantOS
+              See what restaurant owners across Pakistan are saying about Karachi Khana
             </p>
           </div>
           
@@ -252,21 +260,26 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* About Section */}
+      <section id="about">
+        <AboutSection />
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Card className="glass-card p-12">
             <CardContent>
               <h2 className="text-4xl font-bold mb-4 gradient-text">
-                Ready to Transform Your Restaurant?
+                Ready to Transform Your Pakistani Restaurant?
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Join hundreds of successful restaurants using RestaurantOS to streamline operations and boost profitability.
+                Join hundreds of Pakistani restaurants using Karachi Khana to streamline operations and boost profitability.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/dashboard">
-                  <Button size="lg" className="bg-gradient-primary text-primary-foreground text-lg px-8 py-4 hover:opacity-90 transition-all duration-300 hover:scale-105">
-                    Start Your Free Trial
+                  <Button size="lg" className="bg-gradient-primary text-primary-foreground text-lg px-8 py-4 hover:opacity-90 transition-all duration-300 hover:scale-[1.02]">
+                    Start Your Journey Today
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
@@ -297,14 +310,14 @@ export default function Landing() {
       <footer className="relative z-10 border-t border-border/50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-4 md:mb-0">
+            <Link to="/" className="flex items-center space-x-3 mb-4 md:mb-0 hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-                <ChefHat className="w-5 h-5 text-primary-foreground" />
+                <span className="text-primary-foreground font-bold text-sm">K</span>
               </div>
-              <span className="text-lg font-semibold">RestaurantOS</span>
-            </div>
+              <span className="text-lg font-semibold">Karachi Khana</span>
+            </Link>
             <div className="text-sm text-muted-foreground">
-              © 2024 RestaurantOS. All rights reserved.
+              © 2024 Karachi Khana. Made with ❤️ for Pakistani restaurants.
             </div>
           </div>
         </div>

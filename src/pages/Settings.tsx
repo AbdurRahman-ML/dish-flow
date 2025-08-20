@@ -36,7 +36,7 @@ export default function Settings() {
       </div>
 
       <Tabs defaultValue="general" className="space-y-6">
-        <TabsList className="grid grid-cols-2 lg:grid-cols-6 w-full">
+        <TabsList className="grid grid-cols-3 md:grid-cols-6 w-full overflow-x-auto">
           <TabsTrigger value="general" className="flex items-center gap-2">
             <ChefHat className="h-4 w-4" />
             <span className="hidden sm:inline">General</span>
@@ -77,22 +77,22 @@ export default function Settings() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="restaurant-name">Restaurant Name</Label>
-                  <Input id="restaurant-name" defaultValue="RestaurantOS" />
+                  <Input id="restaurant-name" defaultValue="Karachi Khana" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="restaurant-phone">Phone Number</Label>
-                  <Input id="restaurant-phone" defaultValue="+1 (555) 123-4567" />
+                  <Input id="restaurant-phone" defaultValue="+92 300 1234567" />
                 </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="restaurant-address">Address</Label>
-                <Input id="restaurant-address" defaultValue="123 Main Street, Cityville, ST 12345" />
+                <Input id="restaurant-address" defaultValue="Tariq Road, Karachi, Sindh, Pakistan" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="restaurant-description">Description</Label>
                 <Textarea 
                   id="restaurant-description" 
-                  defaultValue="A modern restaurant offering exceptional dining experiences with fresh, locally-sourced ingredients."
+                  defaultValue="Authentic Pakistani cuisine with traditional flavors, serving the best biryani, karahi, and kebabs in Karachi."
                   className="min-h-[100px]"
                 />
               </div>
@@ -125,11 +125,11 @@ export default function Settings() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="currency">Currency</Label>
-                  <Input id="currency" defaultValue="USD ($)" />
+                  <Input id="currency" defaultValue="PKR (₨)" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="tax-rate">Tax Rate (%)</Label>
-                  <Input id="tax-rate" type="number" defaultValue="8.5" />
+                  <Input id="tax-rate" type="number" defaultValue="17" />
                 </div>
               </div>
               <div className="space-y-4">
