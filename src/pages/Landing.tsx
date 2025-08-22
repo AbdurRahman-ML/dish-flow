@@ -317,7 +317,7 @@ export default function Landing() {
               <span className="text-lg font-semibold">Karachi Khana</span>
             </Link>
             <div className="text-sm text-muted-foreground">
-              © 2024 Karachi Khana. Made with Love for Pakistani restaurants.
+              © 2024 Karachi Khana. Made with ❤️ for Pakistani restaurants.
             </div>
           </div>
         </div>
