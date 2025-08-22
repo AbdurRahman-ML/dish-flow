@@ -62,7 +62,7 @@ export default function Analytics() {
           change="+12.5%"
           changeType="positive"
           icon={TrendingUp}
-          className="hover-scale"
+          className="card-hover-scale"
         />
         <MetricCard
           title="Total Orders"
@@ -70,7 +70,7 @@ export default function Analytics() {
           change="+8.2%"
           changeType="positive"
           icon={Target}
-          className="hover-scale"
+          className="card-hover-scale"
         />
         <MetricCard
           title="Avg. Order Value"
@@ -78,7 +78,7 @@ export default function Analytics() {
           change="-2.1%"
           changeType="negative"
           icon={TrendingDown}
-          className="hover-scale"
+          className="card-hover-scale"
         />
         <MetricCard
           title="Customer Rating"
@@ -86,20 +86,20 @@ export default function Analytics() {
           change="+0.3"
           changeType="positive"
           icon={Star}
-          className="hover-scale"
+          className="card-hover-scale"
         />
       </div>
 
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Revenue Chart */}
-        <Card className="glass-card hover-scale">
+        <Card className="glass-card card-hover-scale">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
               <TrendingUp className="h-5 w-5 text-primary" />
               Weekly Revenue
             </CardTitle>
-            <CardDescription>Revenue and order trends over the past week</CardDescription>
+            <CardDescription className="text-sm md:text-base">Revenue and order trends over the past week</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -133,13 +133,13 @@ export default function Analytics() {
         </Card>
 
         {/* Peak Hours */}
-        <Card className="glass-card hover-scale">
+        <Card className="glass-card card-hover-scale">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
               <Clock className="h-5 w-5 text-primary" />
               Peak Hours Analysis
             </CardTitle>
-            <CardDescription>Customer traffic throughout the day</CardDescription>
+            <CardDescription className="text-sm md:text-base">Customer traffic throughout the day</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -169,10 +169,10 @@ export default function Analytics() {
       {/* Menu Performance & Top Dishes */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Menu Performance */}
-        <Card className="glass-card hover-scale">
+        <Card className="glass-card card-hover-scale">
           <CardHeader>
-            <CardTitle>Menu Performance</CardTitle>
-            <CardDescription>Distribution of orders by category</CardDescription>
+            <CardTitle className="text-lg md:text-xl">Menu Performance</CardTitle>
+            <CardDescription className="text-sm md:text-base">Distribution of orders by category</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -215,10 +215,10 @@ export default function Analytics() {
         </Card>
 
         {/* Top Performing Dishes */}
-        <Card className="glass-card hover-scale">
+        <Card className="glass-card card-hover-scale">
           <CardHeader>
-            <CardTitle>Top Performing Dishes</CardTitle>
-            <CardDescription>Best sellers this week</CardDescription>
+            <CardTitle className="text-lg md:text-xl">Top Performing Dishes</CardTitle>
+            <CardDescription className="text-sm md:text-base">Best sellers this week</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -254,10 +254,10 @@ export default function Analytics() {
       </div>
 
       {/* Performance Metrics */}
-      <Card className="glass-card hover-scale">
+      <Card className="glass-card card-hover-scale">
         <CardHeader>
-          <CardTitle>Performance Goals</CardTitle>
-          <CardDescription>Track your monthly targets and achievements</CardDescription>
+          <CardTitle className="text-lg md:text-xl">Performance Goals</CardTitle>
+          <CardDescription className="text-sm md:text-base">Track your monthly targets and achievements</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

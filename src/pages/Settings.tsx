@@ -65,13 +65,13 @@ export default function Settings() {
 
         {/* General Settings */}
         <TabsContent value="general" className="space-y-6">
-          <Card className="glass-card hover-scale">
+          <Card className="glass-card card-hover-scale">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
                 <ChefHat className="h-5 w-5 text-primary" />
                 Restaurant Information
               </CardTitle>
-              <CardDescription>Basic information about your restaurant</CardDescription>
+              <CardDescription className="text-sm md:text-base">Basic information about your restaurant</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -113,13 +113,13 @@ export default function Settings() {
             </CardContent>
           </Card>
 
-          <Card className="glass-card hover-scale">
+          <Card className="glass-card card-hover-scale">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
                 <DollarSign className="h-5 w-5 text-primary" />
                 Payment & Pricing
               </CardTitle>
-              <CardDescription>Configure payment methods and pricing settings</CardDescription>
+              <CardDescription className="text-sm md:text-base">Configure payment methods and pricing settings</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

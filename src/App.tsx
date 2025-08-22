@@ -43,20 +43,22 @@ function AppLayout() {
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
         <AppSidebar />
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col min-w-0">
           <AppHeader />
-          <main className="flex-1 overflow-auto">
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/menu" element={<Menu />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/tables" element={<Tables />} />
-              <Route path="/staff" element={<Staff />} />
-              <Route path="/analytics" element={<Analytics />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+          <main className="flex-1 overflow-auto p-4 md:p-6">
+            <div className="max-w-7xl mx-auto">
+              <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/tables" element={<Tables />} />
+                <Route path="/staff" element={<Staff />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
           </main>
         </div>
       </div>
