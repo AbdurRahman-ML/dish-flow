@@ -14,7 +14,8 @@ import {
   Sparkles,
   TrendingUp,
   Zap,
-  Globe
+  Globe,
+  MapPin
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -54,25 +55,31 @@ const features = [
 
 const testimonials = [
   {
-    name: "Ahmad Hassan",
-    role: "Restaurant Owner",
-    restaurant: "Lahori Karahi House",
-    content: "Is platform ne hamare restaurant ko completely transform kar diya hai. Orders manage karna aasan ho gaya aur customers bhi khush hain.",
-    rating: 5
+    name: "Haji Ahmad Hassan",
+    role: "Restaurant Owner & Head of Family",
+    restaurant: "Lahori Karahi House • لاہوری کڑاہی ہاؤس",
+    location: "Defence Phase 5, Karachi",
+    content: "SubhanAllah! Is platform ne hamare khandani restaurant ko bilkul transform kar diya hai. Orders manage karna itna aasan ho gaya hai ke ab hum customer service par zyada focus kar sakte hain. Customers bhi khush hain aur humara reputation aur bhi behtar ho gaya hai.",
+    rating: 5,
+    heritage: "3rd Generation Restaurant Owner"
   },
   {
-    name: "Fatima Sheikh",
-    role: "Head Chef",
-    restaurant: "Biryani Palace",
-    content: "Kitchen management features kamaal ke hain. Humara food waste 30% kam ho gaya hai aur order accuracy bhi improve hui hai.",
-    rating: 5
+    name: "Begum Fatima Sheikh",
+    role: "Head Chef & Recipe Guardian", 
+    restaurant: "Royal Biryani Palace • شاہی بریانی پیلس",
+    location: "Gulshan-e-Iqbal, Karachi",
+    content: "MashAllah, kitchen management ke features itne kamaal ke hain! Humara food waste 30% kam ho gaya hai aur order accuracy bhi bohot improve hui hai. Ab hum apne purane nuskhe (recipes) ko modern technology ke saath perfectly manage kar sakte hain.",
+    rating: 5,
+    heritage: "Guardian of 50+ Family Recipes"
   },
   {
-    name: "Kashif Ali",
-    role: "General Manager",
-    restaurant: "Sindhi Saag Restaurant",
-    content: "Analytics dashboard se jo insights milte hain wo pehle kabhi nahi the. Hamare revenue mein 25% ka boost aya hai data-driven decisions se.",
-    rating: 5
+    name: "Malik Kashif Ali",
+    role: "General Manager & Operations",
+    restaurant: "Sindhi Saag Restaurant • سندھی ساگ ریسٹورنٹ",
+    location: "Clifton Block 4, Karachi",
+    content: "Analytics dashboard se jo insights milte hain wo pehle kabhi nahi dekhe the. Alhamdulillah, hamare revenue mein 25% ka boost aya hai in data-driven decisions se. Ab hum samajh sakte hain ke customers ko kya chahiye aur kab chahiye.",
+    rating: 5,
+    heritage: "15 Years Restaurant Management"
   }
 ];
 
@@ -232,26 +239,33 @@ export default function Landing() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card 
+                <Card 
                 key={testimonial.name} 
-                className="glass-card card-hover"
+                className="glass-card card-hover cultural-pattern border-primary/20"
                 style={{
                   animationDelay: `${index * 0.2}s`
                 }}
               >
                 <CardContent className="p-8">
-                  <div className="flex mb-4">
-                    {Array.from({length: testimonial.rating}).map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-warning fill-current" />
-                    ))}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex">
+                      {Array.from({length: testimonial.rating}).map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-warning fill-current" />
+                      ))}
+                    </div>
+                    <Badge variant="outline" className="text-xs">{testimonial.heritage}</Badge>
                   </div>
-                  <p className="text-muted-foreground mb-6 leading-relaxed italic">
+                  <p className="text-muted-foreground mb-6 leading-relaxed italic text-sm">
                     "{testimonial.content}"
                   </p>
                   <div className="border-t border-border pt-6">
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    <div className="text-sm text-primary">{testimonial.restaurant}</div>
+                    <div className="font-semibold text-lg">{testimonial.name}</div>
+                    <div className="text-sm text-muted-foreground mb-1">{testimonial.role}</div>
+                    <div className="text-sm font-medium text-primary mb-1">{testimonial.restaurant}</div>
+                    <div className="text-xs text-muted-foreground flex items-center gap-1">
+                      <MapPin className="w-3 h-3" />
+                      {testimonial.location}
+                    </div>
                   </div>
                 </CardContent>
               </Card>

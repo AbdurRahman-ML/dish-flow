@@ -69,6 +69,10 @@ export default {
 					DEFAULT: 'hsl(var(--warning))',
 					foreground: 'hsl(var(--warning-foreground))'
 				},
+				terracotta: {
+					DEFAULT: 'hsl(var(--terracotta))',
+					foreground: 'hsl(var(--terracotta-foreground))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -83,13 +87,16 @@ export default {
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-success': 'var(--gradient-success)',
+				'gradient-gold': 'var(--gradient-gold)',
+				'gradient-crimson': 'var(--gradient-crimson)', 
 				'gradient-glass': 'var(--gradient-glass)',
 				'gradient-card': 'var(--gradient-card)'
 			},
 			boxShadow: {
 				'glass': 'var(--shadow-glass)',
 				'card': 'var(--shadow-card)',
-				'primary': 'var(--shadow-primary)'
+				'primary': 'var(--shadow-primary)',
+				'gold': 'var(--shadow-gold)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
