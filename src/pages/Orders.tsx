@@ -5,97 +5,100 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { pakistaniNames, menuItems } from "@/data/menuData";
 
 const orders = [
   {
     id: "#001",
-    table: "Table 5",
-    customerName: "John Smith",
+    table: { en: "Table 5", ur: "میز 5" },
+    customerName: pakistaniNames[0],
     items: [
-      { name: "Classic Burger", quantity: 2, price: 14.99 },
-      { name: "Caesar Salad", quantity: 1, price: 12.99 },
-      { name: "Coca Cola", quantity: 2, price: 3.99 }
+      { name: menuItems[0].name, quantity: 2, price: 1200 },
+      { name: menuItems[2].name, quantity: 1, price: 600 },
+      { name: { en: "Fresh Lime Water", ur: "تازہ لیمو پانی" }, quantity: 2, price: 150 }
     ],
-    total: 50.96,
+    total: 3150,
     status: "preparing",
     orderTime: "2:15 PM",
-    estimatedTime: "15 min",
+    estimatedTime: { en: "15 min", ur: "15 منٹ" },
     progress: 45,
-    specialRequests: "No onions on burger"
+    specialRequests: { en: "No onions in karahi", ur: "کڑاہی میں پیاز نہیں" }
   },
   {
     id: "#002",
-    table: "Table 12",
-    customerName: "Sarah Johnson",
+    table: { en: "Table 12", ur: "میز 12" },
+    customerName: pakistaniNames[1],
     items: [
-      { name: "Grilled Salmon", quantity: 1, price: 24.99 },
-      { name: "House Wine", quantity: 2, price: 12.00 }
+      { name: menuItems[3].name, quantity: 1, price: 1500 },
+      { name: { en: "Kashmiri Chai", ur: "کشمیری چائے" }, quantity: 2, price: 200 }
     ],
-    total: 48.99,
+    total: 1900,
     status: "ready",
     orderTime: "2:10 PM",
-    estimatedTime: "Ready",
+    estimatedTime: { en: "Ready", ur: "تیار" },
     progress: 100,
     specialRequests: null
   },
   {
     id: "#003",
-    table: "Table 3",
-    customerName: "Mike Wilson",
+    table: { en: "Table 3", ur: "میز 3" },
+    customerName: pakistaniNames[2],
     items: [
-      { name: "Pasta Carbonara", quantity: 3, price: 16.99 },
-      { name: "Garlic Bread", quantity: 1, price: 6.99 }
+      { name: menuItems[1].name, quantity: 3, price: 800 },
+      { name: menuItems[6].name, quantity: 1, price: 400 }
     ],
-    total: 57.96,
+    total: 2800,
     status: "served",
     orderTime: "1:45 PM",
-    estimatedTime: "Completed",
+    estimatedTime: { en: "Completed", ur: "مکمل" },
     progress: 100,
-    specialRequests: "Extra parmesan cheese"
+    specialRequests: { en: "Extra raita with biryani", ur: "بریانی کے ساتھ اضافی رائتہ" }
   },
   {
     id: "#004",
-    table: "Table 8",
-    customerName: "Emma Davis",
+    table: { en: "Table 8", ur: "میز 8" },
+    customerName: pakistaniNames[3],
     items: [
-      { name: "Margherita Pizza", quantity: 2, price: 18.99 },
-      { name: "Sprite", quantity: 3, price: 3.99 }
+      { name: menuItems[5].name, quantity: 2, price: 700 },
+      { name: { en: "Fresh Lime Water", ur: "تازہ لیمو پانی" }, quantity: 3, price: 150 }
     ],
-    total: 49.95,
+    total: 1850,
     status: "new",
     orderTime: "2:20 PM",
-    estimatedTime: "20 min",
+    estimatedTime: { en: "20 min", ur: "20 منٹ" },
     progress: 0,
-    specialRequests: "Thin crust"
+    specialRequests: { en: "Medium spice level", ur: "درمیانہ مسالہ" }
   }
 ];
 
 export default function Orders() {
+  const { language, t } = useLanguage();
   const [selectedTab, setSelectedTab] = useState("all");
 
   const getStatusInfo = (status: string) => {
     switch (status) {
       case "new":
         return {
-          badge: <Badge variant="destructive">New Order</Badge>,
+          badge: <Badge variant="destructive">{t('newOrder')}</Badge>,
           icon: <AlertCircle className="w-4 h-4 text-destructive" />,
           color: "text-destructive"
         };
       case "preparing":
         return {
-          badge: <Badge className="bg-warning text-warning-foreground">Preparing</Badge>,
+          badge: <Badge className="bg-warning text-warning-foreground">{t('preparing')}</Badge>,
           icon: <ChefHat className="w-4 h-4 text-warning" />,
           color: "text-warning"
         };
       case "ready":
         return {
-          badge: <Badge className="bg-info text-info-foreground">Ready</Badge>,
+          badge: <Badge className="bg-info text-info-foreground">{t('ready')}</Badge>,
           icon: <CheckCircle className="w-4 h-4 text-info" />,
           color: "text-info"
         };
       case "served":
         return {
-          badge: <Badge variant="outline" className="border-success text-success">Served</Badge>,
+          badge: <Badge variant="outline" className="border-success text-success">{t('served')}</Badge>,
           icon: <Utensils className="w-4 h-4 text-success" />,
           color: "text-success"
         };
@@ -127,20 +130,20 @@ export default function Orders() {
     <div className="p-6 space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold gradient-text">Order Management</h1>
+        <h1 className="text-3xl font-bold gradient-text">{t('orderManagement')}</h1>
         <p className="text-muted-foreground mt-1">
-          Track and manage all incoming orders in real-time.
+          {t('trackOrders')}
         </p>
       </div>
 
       {/* Status Tabs */}
       <Tabs value={selectedTab} onValueChange={setSelectedTab}>
         <TabsList className="grid grid-cols-5 w-full max-w-md">
-          <TabsTrigger value="all">All ({orders.length})</TabsTrigger>
-          <TabsTrigger value="new">New ({orders.filter(o => o.status === "new").length})</TabsTrigger>
-          <TabsTrigger value="preparing">Preparing ({orders.filter(o => o.status === "preparing").length})</TabsTrigger>
-          <TabsTrigger value="ready">Ready ({orders.filter(o => o.status === "ready").length})</TabsTrigger>
-          <TabsTrigger value="served">Served ({orders.filter(o => o.status === "served").length})</TabsTrigger>
+          <TabsTrigger value="all">{t('all')} ({orders.length})</TabsTrigger>
+          <TabsTrigger value="new">{t('new')} ({orders.filter(o => o.status === "new").length})</TabsTrigger>
+          <TabsTrigger value="preparing">{t('preparing')} ({orders.filter(o => o.status === "preparing").length})</TabsTrigger>
+          <TabsTrigger value="ready">{t('ready')} ({orders.filter(o => o.status === "ready").length})</TabsTrigger>
+          <TabsTrigger value="served">{t('served')} ({orders.filter(o => o.status === "served").length})</TabsTrigger>
         </TabsList>
 
         <TabsContent value={selectedTab} className="mt-6">
@@ -159,7 +162,7 @@ export default function Orders() {
                       {statusInfo.badge}
                     </div>
                     <div className="flex items-center justify-between text-sm text-muted-foreground">
-                      <span>{order.table} • {order.customerName}</span>
+                      <span>{order.table[language]} • {order.customerName}</span>
                       <span>{order.orderTime}</span>
                     </div>
                   </CardHeader>
@@ -169,8 +172,8 @@ export default function Orders() {
                     <div className="space-y-2">
                       {order.items.map((item, index) => (
                         <div key={index} className="flex justify-between text-sm">
-                          <span>{item.quantity}x {item.name}</span>
-                          <span className="text-muted-foreground">${(item.quantity * item.price).toFixed(2)}</span>
+                          <span>{item.quantity}x {item.name[language]}</span>
+                          <span className="text-muted-foreground">Rs. {(item.quantity * item.price).toFixed(0)}</span>
                         </div>
                       ))}
                     </div>
@@ -178,16 +181,16 @@ export default function Orders() {
                     {/* Special Requests */}
                     {order.specialRequests && (
                       <div className="p-2 rounded bg-muted/30 border border-border/50">
-                        <p className="text-xs text-muted-foreground mb-1">Special Requests:</p>
-                        <p className="text-sm">{order.specialRequests}</p>
+                        <p className="text-xs text-muted-foreground mb-1">{t('specialRequests')}</p>
+                        <p className="text-sm">{order.specialRequests[language]}</p>
                       </div>
                     )}
 
                     {/* Progress Bar */}
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span>Progress</span>
-                        <span className={statusInfo.color}>{order.estimatedTime}</span>
+                        <span>{t('progress')}</span>
+                        <span className={statusInfo.color}>{order.estimatedTime[language]}</span>
                       </div>
                       <Progress 
                         value={order.progress} 
@@ -197,22 +200,22 @@ export default function Orders() {
 
                     {/* Total and Actions */}
                     <div className="flex items-center justify-between pt-2 border-t border-border/50">
-                      <span className="text-lg font-bold text-primary">${order.total.toFixed(2)}</span>
+                      <span className="text-lg font-bold text-primary">Rs. {order.total.toFixed(0)}</span>
                       
                       <div className="flex gap-2">
                         {order.status === "new" && (
                           <Button size="sm" className="bg-gradient-primary text-primary-foreground">
-                            Start Cooking
+                            {t('startCooking')}
                           </Button>
                         )}
                         {order.status === "preparing" && (
                           <Button size="sm" variant="outline" className="border-info text-info">
-                            Mark Ready
+                            {t('markReady')}
                           </Button>
                         )}
                         {order.status === "ready" && (
                           <Button size="sm" variant="outline" className="border-success text-success">
-                            Mark Served
+                            {t('markServed')}
                           </Button>
                         )}
                       </div>
@@ -228,11 +231,11 @@ export default function Orders() {
               <div className="text-muted-foreground mb-4">
                 <span className="text-6xl">📝</span>
               </div>
-              <h3 className="text-lg font-medium mb-2">No orders found</h3>
+              <h3 className="text-lg font-medium mb-2">{t('noOrders')}</h3>
               <p className="text-muted-foreground">
                 {selectedTab === "all" 
-                  ? "No orders have been placed yet." 
-                  : `No orders with status "${selectedTab}".`
+                  ? (language === 'en' ? "No orders have been placed yet." : "ابھی تک کوئی آرڈر نہیں آیا۔")
+                  : (language === 'en' ? `No orders with status "${selectedTab}".` : `"${selectedTab}" اسٹیٹس کے ساتھ کوئی آرڈر نہیں۔`)
                 }
               </p>
             </div>

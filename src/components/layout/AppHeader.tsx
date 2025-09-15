@@ -1,11 +1,18 @@
-import { Bell, Search, User } from "lucide-react";
+import { Bell, Search, User, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { useLanguage, Language } from "@/contexts/LanguageContext";
 
 export function AppHeader() {
+  const { language, setLanguage } = useLanguage();
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'ur' : 'en');
+  };
+
   return (
     <header className="h-16 bg-card border-b border-border flex items-center justify-between px-4 md:px-6">
       <div className="flex items-center space-x-2 md:space-x-4 flex-1">
@@ -21,6 +28,18 @@ export function AppHeader() {
       </div>
 
       <div className="flex items-center space-x-1 md:space-x-2">
+        {/* Language Toggle */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={toggleLanguage}
+          className="h-9 w-9"
+          title={language === 'en' ? 'Switch to Urdu' : 'Switch to English'}
+        >
+          <Languages className="h-4 w-4" />
+          <span className="sr-only">Toggle language</span>
+        </Button>
+        
         {/* Theme Toggle */}
         <ThemeToggle />
         
